@@ -34,7 +34,7 @@ class ulamek
 class liczbaU
 {
   int calosc;
-  ulamek czescU;
+  ulamek czescU = new ulamek(1 ,1);
 
   liczbaU(ulamek u)
   {
@@ -86,11 +86,11 @@ class liczbaU
   {
     if (calosc == 0)
     {
-      if (czescU.licznik == 0) return " " + 0;
-      else return " " + czescU.toString();
+      if (czescU.licznik == 0) return Integer.toString(0);
+      else return czescU.toString();
     }
-    else if (czescU.licznik == 0) return " " + calosc;
-    else return " " + calosc + " " + czescU.toString();
+    else if (czescU.licznik == 0) return Integer.toString(calosc);
+    else return calosc + " " + czescU.toString();
   }
 }
 
@@ -111,8 +111,12 @@ class testUlamek
     liczbaU e = new liczbaU(2, a);
     liczbaU f = new liczbaU(1, 4, 3);
     liczbaU g = new liczbaU(a);
+    liczbaU h = new liczbaU(b);
+    liczbaU i = new liczbaU(3, 2, 5);
 
-    g.mnozPrzez(2);
+    g.mnozPrzez(d);
+    h.mnozPrzez(3);
+    i.mnozPrzez(a);
 
     System.out.println(a.toString());
     System.out.println(b.toString());
@@ -121,5 +125,7 @@ class testUlamek
     System.out.println(e.toString());
     System.out.println(f.toString());
     System.out.println(g.toString());
+    System.out.println(h.toString());
+    System.out.println(i.toString());
   }
 }
