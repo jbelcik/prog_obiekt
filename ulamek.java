@@ -97,9 +97,9 @@ class liczbaU
 
 class testUlamek
 {
-	public static void main(String[] args)
-	{
-		ulamek a = new ulamek(2, 2);
+  public static void main(String[] args)
+  {
+    ulamek a = new ulamek(2, 2);
     ulamek b = new ulamek(1, 3);
 
     a.mnozPrzez(b);
@@ -121,5 +121,5 @@ class testUlamek
     System.out.println(e.toString());
     System.out.println(f.toString());
     System.out.println(g.toString());
-	}
+  }
 }
