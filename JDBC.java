@@ -9,7 +9,7 @@ public class JDBC
 	  try
     {
 	        Class.forName("org.postgresql.Driver");
-	        Connection db = DriverManager.getConnection(url, "jbelcik", "kingjames23");
+	        Connection db = DriverManager.getConnection(url, "jbelcik", "");
 
 	        Statement st = db.createStatement();
           st.executeUpdate("UPDATE narokw SET Kwota = Kwota - 100 WHERE rok <= 1990;");
