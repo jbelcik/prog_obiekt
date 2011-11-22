@@ -1,6 +1,6 @@
 class ulamek
 {
-	int licznik, mianownik;
+  int licznik, mianownik;
 
   ulamek(int l, int m)
   {
@@ -19,15 +19,15 @@ class ulamek
     licznik *= i;
   }
 
-	static ulamek razy(ulamek u, ulamek v)
-	{
+  static ulamek razy(ulamek u, ulamek v)
+  {
     return new ulamek(u.licznik * v.licznik, u.mianownik * v.mianownik);
-	}
-	
-	public String toString()
-	{
-		return licznik + "/" + mianownik;
-	}
+  }
+
+  public String toString()
+  {
+    return licznik + "/" + mianownik;
+  }
 }
 
 
