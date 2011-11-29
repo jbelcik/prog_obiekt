@@ -1,9 +1,6 @@
-import java.io.*;
-
-
 class Ulamek2
 {
-  private int licznik, mianownik;
+  int licznik, mianownik;
 
   Ulamek2(int l, int m)
   {
@@ -81,6 +78,11 @@ class LiczbaU2
     czescU.setMianownik(u.getMianownik());
   }
 
+  LiczbaU2()
+  {
+    this(0, 0, 0);
+  }
+
   void mnozPrzez(LiczbaU2 l)
   {
     czescU.setLicznik((calosc * czescU.getMianownik() + czescU.getLicznik()) * (l.calosc * l.czescU.getMianownik() + l.czescU.getLicznik()));
@@ -117,7 +119,7 @@ class LiczbaU2
 }
 
 
-class LiczbaUD extends Ulamek
+class LiczbaUD extends Ulamek2
 {
   private int calosc;
 
@@ -130,14 +132,13 @@ class LiczbaUD extends Ulamek
   LiczbaUD(int c, Ulamek2 u)
   {
     calosc = c + u.getLicznik() / u.getMianownik();
-    super (u.getLicznik() % u.getMianownik(), u.getMianownik());
+    super(u.getLicznik() % u.getMianownik(), u.getMianownik());
   }
 
   LiczbaUD(int c, int l, int m)
   {
     calosc = c + l / m;
-    l %= m;
-    super(l, m);
+    super(l % m, m);
   }
 
   void mnozPrzez(LiczbaU2 l)
