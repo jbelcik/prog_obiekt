@@ -1,13 +1,13 @@
 class Ulamek2
 {
-  int licznik, mianownik;
+  private int licznik, mianownik;
 
   Ulamek2(int l, int m)
   {
     licznik = l;
     mianownik = m;
   }
-	
+
   void mnozPrzez(Ulamek2 v)
   {
     licznik *= v.licznik;
@@ -78,11 +78,6 @@ class LiczbaU2
     czescU.setMianownik(u.getMianownik());
   }
 
-  LiczbaU2()
-  {
-    this(0, 0, 0);
-  }
-
   void mnozPrzez(LiczbaU2 l)
   {
     czescU.setLicznik((calosc * czescU.getMianownik() + czescU.getLicznik()) * (l.calosc * l.czescU.getMianownik() + l.czescU.getLicznik()));
@@ -125,20 +120,20 @@ class LiczbaUD extends Ulamek2
 
   LiczbaUD(Ulamek2 u)
   {
-    calosc = u.getLicznik() / u.getMianownik();
     super(u.getLicznik() % u.getMianownik(), u.getMianownik());
+    calosc = u.getLicznik() / u.getMianownik();
   }
 
   LiczbaUD(int c, Ulamek2 u)
   {
-    calosc = c + u.getLicznik() / u.getMianownik();
     super(u.getLicznik() % u.getMianownik(), u.getMianownik());
+    calosc = c + u.getLicznik() / u.getMianownik();
   }
 
   LiczbaUD(int c, int l, int m)
   {
-    calosc = c + l / m;
     super(l % m, m);
+    calosc = c + l / m;
   }
 
   void mnozPrzez(LiczbaU2 l)
@@ -148,28 +143,28 @@ class LiczbaUD extends Ulamek2
 
   void mnozPrzez(int i)
   {
-    licznik = (calosc * mianownik + licznik) * i;
-    calosc = licznik / mianownik;
-    licznik %= mianownik;
+    setLicznik((calosc * getMianownik() + getLicznik()) * i);
+    calosc = getLicznik() / getMianownik();
+    setLicznik(getLicznik() % getMianownik());
   }
 
   void mnozPrzez(Ulamek2 u)
   {
-    licznik = (calosc * mianownik + licznik) * u.getLicznik();
-    mianownik *= u.getMianownik();
-    calosc = licznik / mianownik;
-    licznik %= mianownik;
+    setLicznik((calosc * getMianownik() + getLicznik()) * u.getLicznik());
+    setMianownik(getMianownik() * u.getMianownik());
+    calosc = getLicznik() / getMianownik();
+    setLicznik(getLicznik() % getMianownik());
   }
 
   public String toString()
   {
     if (calosc == 0)
     {
-      if (licznik == 0) return Integer.toString(0);
-      else return licznik + "/" + mianownik;
+      if (getLicznik() == 0) return Integer.toString(0);
+      else return getLicznik() + "/" + getMianownik();
     }
-    else if (licznik == 0) return Integer.toString(calosc);
-    else return calosc + " " + licznik + "/" + mianownik;
+    else if (getLicznik() == 0) return Integer.toString(calosc);
+    else return calosc + " " + getLicznik() + "/" + getMianownik();
   }
 }
 
