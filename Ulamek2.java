@@ -1,3 +1,6 @@
+import java.io.*;
+
+
 class Ulamek2
 {
   private int licznik, mianownik;
@@ -91,7 +94,6 @@ class LiczbaU2
     czescU.setLicznik((calosc * czescU.getMianownik() + czescU.getLicznik()) * i);
     calosc = czescU.getLicznik() / czescU.getMianownik();
     czescU.setLicznik(czescU.getLicznik() % czescU.getMianownik());
-
   }
 
   void mnozPrzez(Ulamek2 u)
@@ -115,6 +117,62 @@ class LiczbaU2
 }
 
 
+class LiczbaUD extends Ulamek
+{
+  private int calosc;
+
+  LiczbaUD(Ulamek2 u)
+  {
+    calosc = u.getLicznik() / u.getMianownik();
+    super(u.getLicznik() % u.getMianownik(), u.getMianownik());
+  }
+
+  LiczbaUD(int c, Ulamek2 u)
+  {
+    calosc = c + u.getLicznik() / u.getMianownik();
+    super (u.getLicznik() % u.getMianownik(), u.getMianownik());
+  }
+
+  LiczbaUD(int c, int l, int m)
+  {
+    calosc = c + l / m;
+    l %= m;
+    super(l, m);
+  }
+
+  void mnozPrzez(LiczbaU2 l)
+  {
+    
+  }
+
+  void mnozPrzez(int i)
+  {
+    licznik = (calosc * mianownik + licznik) * i;
+    calosc = licznik / mianownik;
+    licznik %= mianownik;
+  }
+
+  void mnozPrzez(Ulamek2 u)
+  {
+    licznik = (calosc * mianownik + licznik) * u.getLicznik();
+    mianownik *= u.getMianownik();
+    calosc = licznik / mianownik;
+    licznik %= mianownik;
+  }
+
+  public String toString()
+  {
+    if (calosc == 0)
+    {
+      if (licznik == 0) return Integer.toString(0);
+      else return licznik + "/" + mianownik;
+    }
+    else if (licznik == 0) return Integer.toString(calosc);
+    else return calosc + " " + licznik + "/" + mianownik;
+  }
+}
+
+
 class TestUlamek2
 {
   public static void main(String[] args)
@@ -127,12 +185,12 @@ class TestUlamek2
 
     Ulamek2 c = Ulamek2.razy(a, b);
 
-    LiczbaU2 d = new LiczbaU2(a);
-    LiczbaU2 e = new LiczbaU2(2, a);
-    LiczbaU2 f = new LiczbaU2(1, 4, 3);
-    LiczbaU2 g = new LiczbaU2(a);
-    LiczbaU2 h = new LiczbaU2(b);
-    LiczbaU2 i = new LiczbaU2(3, 2, 5);
+    LiczbaUD d = new LiczbaUD(a);
+    LiczbaUD e = new LiczbaUD(2, a);
+    LiczbaUD f = new LiczbaUD(1, 4, 3);
+    LiczbaUD g = new LiczbaUD(a);
+    LiczbaUD h = new LiczbaUD(b);
+    LiczbaUD i = new LiczbaUD(3, 2, 5);
 
     g.mnozPrzez(d);
     h.mnozPrzez(3);
