@@ -1,14 +1,14 @@
-class ulamek
+class Ulamek
 {
   int licznik, mianownik;
 
-  ulamek(int l, int m)
+  Ulamek(int l, int m)
   {
     licznik = l;
     mianownik = m;
   }
 	
-  void mnozPrzez(ulamek v)
+  void mnozPrzez(Ulamek v)
   {
     licznik *= v.licznik;
     mianownik *= v.mianownik;
@@ -19,9 +19,9 @@ class ulamek
     licznik *= i;
   }
 
-  static ulamek razy(ulamek u, ulamek v)
+  static Ulamek razy(Ulamek u, Ulamek v)
   {
-    return new ulamek(u.licznik * v.licznik, u.mianownik * v.mianownik);
+    return new Ulamek(u.licznik * v.licznik, u.mianownik * v.mianownik);
   }
 
   public String toString()
@@ -31,34 +31,34 @@ class ulamek
 }
 
 
-class liczbaU
+class LiczbaU
 {
   int calosc;
-  ulamek czescU = new ulamek(1 ,1);
+  Ulamek czescU = new Ulamek(1 ,1);
 
-  liczbaU(ulamek u)
+  LiczbaU(Ulamek u)
   {
     calosc = u.licznik / u.mianownik;
     czescU.licznik = u.licznik % u.mianownik;
     czescU.mianownik = u.mianownik;
   }
 
-  liczbaU(int c, ulamek u)
+  LiczbaU(int c, Ulamek u)
   {
     calosc = c + u.licznik / u.mianownik;
     czescU.licznik = u.licznik % u.mianownik;
     czescU.mianownik = u.mianownik;
   }
 
-  liczbaU(int c, int l, int m)
+  LiczbaU(int c, int l, int m)
   {
-    ulamek u = new ulamek(l, m);
+    Ulamek u = new Ulamek(l, m);
     calosc = c + u.licznik / u.mianownik;
     czescU.licznik = u.licznik % u.mianownik;
     czescU.mianownik = u.mianownik;
   }
 
-  void mnozPrzez(liczbaU l)
+  void mnozPrzez(LiczbaU l)
   {
     czescU.licznik = (calosc * czescU.mianownik + czescU.licznik) * (l.calosc * l.czescU.mianownik + l.czescU.licznik);
     czescU.mianownik *= l.czescU.mianownik;
@@ -74,7 +74,7 @@ class liczbaU
 
   }
 
-  void mnozPrzez(ulamek u)
+  void mnozPrzez(Ulamek u)
   {
     czescU.licznik = (calosc * czescU.mianownik + czescU.licznik) * u.licznik;
     czescU.mianownik *= u.mianownik;
@@ -95,24 +95,24 @@ class liczbaU
 }
 
 
-class testUlamek
+class TestUlamek
 {
   public static void main(String[] args)
   {
-    ulamek a = new ulamek(2, 2);
-    ulamek b = new ulamek(1, 3);
+    Ulamek a = new Ulamek(2, 2);
+    Ulamek b = new Ulamek(1, 3);
 
     a.mnozPrzez(b);
     b.mnozPrzez(2);
 
-    ulamek c = ulamek.razy(a, b);
+    Ulamek c = Ulamek.razy(a, b);
 
-    liczbaU d = new liczbaU(a);
-    liczbaU e = new liczbaU(2, a);
-    liczbaU f = new liczbaU(1, 4, 3);
-    liczbaU g = new liczbaU(a);
-    liczbaU h = new liczbaU(b);
-    liczbaU i = new liczbaU(3, 2, 5);
+    LiczbaU d = new LiczbaU(a);
+    LiczbaU e = new LiczbaU(2, a);
+    LiczbaU f = new LiczbaU(1, 4, 3);
+    LiczbaU g = new LiczbaU(a);
+    LiczbaU h = new LiczbaU(b);
+    LiczbaU i = new LiczbaU(3, 2, 5);
 
     g.mnozPrzez(d);
     h.mnozPrzez(3);
