@@ -1,7 +1,7 @@
 import java.util.*;
 
 
-class Student //implements Comparable<Student>
+class Student implements Comparable<Student>
 {
   int nr;
   String imie;
@@ -36,14 +36,14 @@ class Student //implements Comparable<Student>
     return nr + " " + imie + "\n" + ocenyToString();
   }
 
-  /*public int compareTo(Student s)
+  public int compareTo(Student s)
   {
     return this.imie.compareTo(s.imie);
-  }*/
+  }
 }
 
 
-/*class Porownaj implements Comparator<Student>
+class Porownaj implements Comparator<Student>
 {    
   public int compare(Student s1, Student s2)
   {
@@ -57,7 +57,7 @@ class Student //implements Comparable<Student>
     if (max1 >= max2) return -1;
     else return 1;
   }
-}*/
+}
 
 
 class WykazS
@@ -93,7 +93,7 @@ class WykazS
     }
   }
 
-  /*public void sortujA()
+  public void sortujA()
   {
     Collections.sort(wykaz);
   }
@@ -101,7 +101,7 @@ class WykazS
   public void sortujM()
   {
     Collections.sort(wykaz, new Porownaj());
-  }*/
+  }
 }
 
 
@@ -112,7 +112,7 @@ class TestWykazS
     WykazS ws = new WykazS();
 
     ws.wstawStudenta(199200,"Kazik");
-    ws.wstawStudenta(199201,"Kazik");
+    ws.wstawStudenta(199201,"Zygryfd");
     ws.wstawStudenta(199204,"Nikodem");
     ws.wstawStudenta(199205,"Jan");
     ws.wstawStudenta(189557,"Wiesiek");
@@ -132,6 +132,9 @@ class TestWykazS
 
     ws.wstawOcene(199205,3);
     ws.wstawOcene(189557,5);
+
+    ws.sortujA();
+    //ws.sortujM();
 
     ws.wypisz();
     //ws.wypisz(199200);
